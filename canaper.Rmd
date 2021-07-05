@@ -88,16 +88,17 @@ library(tidyverse) # For data wrangling and visualization
 
 # Example: Australian *Acacia*
 
-This demonstrates the package using the dataset included in the paper where CANAPE was first published: `r ncol(acacia$comm)` species of *Acacia* in Australia. Let's take a quick look at the data.
+This demonstrates the package using the dataset of the paper where CANAPE was first published [@Gonzalez-Orozco2014]: `r ncol(acacia$comm)` species of *Acacia* in Australia distributed over `r nrow(acacia$comm)` sites:
 
-```{r load, out.width="100%"}
+```{r load}
 # Phylogenetic tree
 acacia$phy
 
 # Community data matrix (in part). 
 # Rownames correspond to geographical coordinates
-acacia$comm[1:2, 1:4]
+acacia$comm[1:4, 1:4]
 ```
+<br>
 
 # Randomization test
 
@@ -141,6 +142,8 @@ Endemism codes:
 * `mixed` = Mix of neo and paleo
 * `super` = Mixed, and highly significant (*p* < 0.01)
 
+<br>
+
 # Visualize results
 
 We can visualize the results of CANAPE using `ggplot2`. The `cpr_endem_cols` palette with colors typically used for CANAPE is provided.
@@ -149,11 +152,11 @@ We can visualize the results of CANAPE using `ggplot2`. The `cpr_endem_cols` pal
 # Fist do some data wrangling to make 
 # the results easier to plot (add lat/long columns)
 acacia_canape <- as_tibble(acacia_canape, rownames = "site") |> 
-  separate(site, c("long", "lat"), sep = ":") |> 
-  mutate(dplyr::across(c(long, lat), parse_number))
+  separate(site, c("lon", "lat"), sep = ":") |> 
+  mutate(dplyr::across(c(lon, lat), parse_number))
 
 # Plot the results
-ggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) + 
+ggplot(acacia_canape, aes(x = lon, y = lat, fill = endem_type)) + 
   geom_tile() +
   scale_fill_manual(values = cpr_endem_cols, name = "Endemism type") +
   guides(fill = guide_legend(title.position = "top")) +
@@ -172,6 +175,6 @@ Thanks to Shawn Laffan for providing help with the code.
 
 # References
 
-<span style='font-size:80%'><div id="refs"></div></span> 
+<span style='font-size:70%'><div id="refs"></div></span> 
 
 <span style='font-size:100%'>Source code: https://github.com/joelnitta/botany_poster_2021</span> 
