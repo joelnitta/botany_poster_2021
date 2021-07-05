@@ -1,0 +1,115 @@
+references:
+- id: Daru2020a
+  accessed:
+  - year: 2021
+    month: 7
+    day: 1
+  author:
+  - family: Daru
+    given: Barnabas H.
+  - family: Karunarathne
+    given: Piyal
+  - family: Schliep
+    given: Klaus
+  container-title: Methods in Ecology and Evolution
+  container-title-short: Methods Ecol. Evol.
+  DOI: 10/gkzsjp
+  editor:
+  - family: Silvestro
+    given: Daniele
+  ISSN: 2041-210X, 2041-210X
+  issue: '11'
+  issued:
+  - year: 2020
+    month: 11
+  language: en
+  page: 1483-1491
+  source: DOI.org (Crossref)
+  title: 'phyloregion: R package for biogeographical regionalization and macroecology'
+  title-short: phyloregion
+  type: article-journal
+  URL: https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13478
+  volume: '11'
+- id: Gonzalez-Orozco2014
+  author:
+  - family: González-Orozco
+    given: Carlos E.
+  - family: Ebach
+    given: Malte C.
+  - family: Laffan
+    given: Shawn
+  - family: Thornhill
+    given: Andrew H.
+  - family: Knerr
+    given: Nunzio J.
+  - family: Schmidt-Lebuhn
+    given: Alexander N.
+  - family: Cargill
+    given: Christine C.
+  - family: Clements
+    given: Mark
+  - family: Nagalingum
+    given: Nathalie S.
+  - family: Mishler
+    given: Brent D
+  - family: Miller
+    given: Joseph T.
+  container-title: PLoS ONE
+  DOI: 10.1371/journal.pone.0092558
+  ISSN: 1932-6203
+  issue: '3'
+  issued:
+  - year: 2014
+  page: e92558
+  title: Quantifying phytogeographical regions of Australia using geospatial turnover
+    in species composition
+  type: article-journal
+  URL: http://dx.plos.org/10.1371/journal.pone.0092558
+  volume: '9'
+- id: Kembel2010
+  author:
+  - family: Kembel
+    given: Steven W.
+  - family: Cowan
+    given: Peter D.
+  - family: Helmus
+    given: Matthew R.
+  - family: Cornwell
+    given: William K.
+  - family: Morlon
+    given: Helene
+  - family: Ackerly
+    given: David D
+  - family: Blomberg
+    given: Simon P.
+  - family: Webb
+    given: Campbell O
+  container-title: Bioinformatics
+  ISSN: 1460-2059
+  issue: '11'
+  issued:
+  - year: 2010
+    month: 6
+  page: 1463-1464
+  title: 'Picante: R tools for integrating phylogenies and ecology'
+  type: article-journal
+  URL: papers://ebd7d3df-d8f1-4be8-bcf7-4fb07ababf30/Paper/p1990
+  volume: '26'
+- id: Laffan2010
+  author:
+  - family: Laffan
+    given: Shawn W.
+  - family: Lubarsky
+    given: Eugene
+  - family: Rosauer
+    given: Dan F.
+  container-title: Ecography
+  DOI: 10.1111/j.1600-0587.2010.06237.x
+  ISSN: 09067590
+  issue: '4'
+  issued:
+  - year: 2010
+  page: 643-647
+  title: Biodiverse, a tool for the spatial analysis of biological and related diversity
+  type: article-journal
+  volume: '33'

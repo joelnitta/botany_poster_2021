@@ -1,0 +1,177 @@
+---
+title: "canaper: Categorical analysis of neo- and paleo-endemism in R"
+author:
+  - name: Joel H. Nitta
+    affil: 1
+    orcid: '0000-0003-4719-7472'
+affiliation:
+  - num: 1
+    address: University of Tokyo, Department of Biological Sciences<br>✉️ joelnitta@gmail.com<br>🌍 https://joelnitta.com<p style='font-size:60px'>https://github.com/joelnitta/canaper</p>
+column_numbers: 3
+output: 
+  posterdown::posterdown_html:
+    self_contained: false
+csl: elsevier-with-titles.csl
+bibliography: references.yaml
+---
+
+```{css, style, echo = FALSE}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+$if(csl-entry-spacing)$
+  margin-bottom: $csl-entry-spacing$;
+$endif$
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+code.r{
+  font-size: 16px;
+}
+pre {
+  font-size: 16px
+}
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  cache = TRUE
+)
+options(digits = 2)
+library(canaper)
+```
+
+# Background
+
+* CANAPE (**C**ategorical **A**nalysis of **N**eo- and **P**aleo-endemism) is a recently developed method that provides insight into the evolutionary processes underlying endemism [@Gonzalez-Orozco2014]
+* CANAPE integrates a phylogenetic tree with a community (species × sites) matrix to infer if endemic areas are so because of recent speciation (neoendemism), or because they harbor old lineages that have mostly gone extinct in other areas (paleoendemism), or if they are a mixture of both
+* CANAPE is currently only implemented in Biodiverse [@Laffan2010], a program written in perl that is used via a GUI or custom scripts.
+* <span style='font-size:120%'>**`canaper` is a new R package to conduct CANAPE entirely in R**</span>
+
+# Features
+
+* Sparse matrix encoding of community matrices to increase computing efficiency via `phyloregion` [@Daru2020a]
+* Simple implementation of parallel computing to increase speed via `future`
+
+# Installation and loading
+
+`canaper` is currently available on GitHub
+
+```{r install, eval = FALSE}
+devtools::install_github("joelnitta/canaper")
+```
+
+```{r load-pkg}
+# Load packages
+library(canaper)
+library(ape) # For handling phylogenies
+library(future) # For parallel computing
+library(tidyverse) # For data wrangling and visualization
+```
+
+# Example: Australian *Acacia*
+
+This demonstrates the package using the dataset included in the paper where CANAPE was first published: `r ncol(acacia$comm)` species of *Acacia* in Australia. Let's take a quick look at the data.
+
+```{r load, out.width="100%"}
+# Phylogenetic tree
+acacia$phy
+
+# Community data matrix (in part). 
+# Rownames correspond to geographical coordinates
+acacia$comm[1:2, 1:4]
+```
+
+# Randomization test
+
+The first step of CANAPE is to compare the observed values of phylogenetic endemism (PE) and alternative PE (PE measured on a modified tree where all branch lengths are set equal) with those from a set of random communities. The `cpr_rand_test()` conducts the randomization, using parallel computing to increase speed. The `picante` package [@Kembel2010] is used to generate the random communities.
+
+```{r rand-test}
+# Set a parallel back-end, with 4 CPUs running simultaneously
+plan(multisession, workers = 4)
+
+# Run randomization test
+acacia_rand_res <- cpr_rand_test(
+  acacia$comm, acacia$phy, 
+  n_reps = 100, n_iterations = 100000)
+
+# Check some of the results
+acacia_rand_res[1:3, c(1,2,8,9)]
+```
+
+Output summary (in part):
+
+* `pe_obs` = observed PE
+* `pe_rand_mean` = mean PE of the randomizations
+* `pe_obs_p_upper` = percent of randomizations where observed PE was greater than random values
+* `pe_obs_p_lower` = percent of randomizations where observed PE was lower than random values
+
+# Classify significance
+
+The next step of CANAPE is to classify the endemism type of each site. The `cpr_classify_endem()` function does this automatically given output of `cpr_rand_test()`.
+
+```{r classify}
+# Classify endemism type
+acacia_canape <- cpr_classify_endem(acacia_rand_res)
+# Count the results
+table(acacia_canape$endem_type)
+```
+
+Endemism codes:
+
+* `neo` = Neo-endemic
+* `paleo` = Paleo-endemic
+* `mixed` = Mix of neo and paleo
+* `super` = Mixed, and highly significant (*p* < 0.01)
+
+# Visualize results
+
+We can visualize the results of CANAPE using `ggplot2`. The `cpr_endem_cols` palette with colors typically used for CANAPE is provided.
+
+```{r vis, fig.width = 10, fig.height = 8, fig.align = "center"}
+# Fist do some data wrangling to make 
+# the results easier to plot (add lat/long columns)
+acacia_canape <- as_tibble(acacia_canape, rownames = "site") |> 
+  separate(site, c("long", "lat"), sep = ":") |> 
+  mutate(dplyr::across(c(long, lat), parse_number))
+
+# Plot the results
+ggplot(acacia_canape, aes(x = long, y = lat, fill = endem_type)) + 
+  geom_tile() +
+  scale_fill_manual(values = cpr_endem_cols, name = "Endemism type") +
+  guides(fill = guide_legend(title.position = "top")) +
+  theme_gray(base_size = 24) +
+  theme(legend.position = "bottom")
+```
+
+# Next steps
+
+* Implement `rand_structured` randomization algorithm of Biodiverse (should speed up randomizations ~10×)
+* Submit to CRAN
+
+# Acknowledgements
+
+Thanks to Shawn Laffan for providing help with the code.
+
+# References
+
+<span style='font-size:80%'><div id="refs"></div></span> 
+
+<span style='font-size:100%'>Source code: https://github.com/joelnitta/botany_poster_2021</span> 
