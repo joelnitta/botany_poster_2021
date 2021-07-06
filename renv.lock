@@ -158,8 +158,8 @@
       "RemoteUsername": "joelnitta",
       "RemoteRepo": "canaper",
       "RemoteRef": "main",
-      "RemoteSha": "62b3e5187b42d9ca522a307f998b07076a2e1b0f",
-      "Hash": "45a43f403bf11be2764294344a22b82a"
+      "RemoteSha": "dcf643eff6db5e8531aad989b0d12462b035305e",
+      "Hash": "3a9d3af76dd11c13221f883dd6b48591"
     },
     "cellranger": {
       "Package": "cellranger",
