@@ -156,6 +156,26 @@ margin: 0;
 border: 0;
 font-weight: normal;
 }
+/* title link */
+.poster_title a:link {
+color: #FFFFFF;
+text-decoration: none;
+}
+/* title visited link */
+.poster_title a:visited {
+color: #FFFFFF;
+text-decoration: none;
+}
+/* title mouse over link */
+.poster_title a:hover {
+color: #FFFFFF;
+text-decoration: none;
+}
+/* title selected link */
+.poster_title a:active {
+color: #FFFFFF;
+text-decoration: none;
+}
 .poster_body_wrap{
 width: $if(poster_width)$$poster_width$$else$45in$endif$;
 height: calc(100% - $if(titlebox_height)$$titlebox_height$$else$17%$endif$);
@@ -200,10 +220,12 @@ margin-bottom: 2mm;
 font-weight: normal;
 }
 .poster_body h2 {
-color: $if(sectitle2_textcol)$$sectitle2_textcol$$else$#000000$endif$;
-font-size: $if(sectitle2_textsize)$$sectitle2_textsize$$else$40pt$endif$;
+color: #0b4545;
+font-size: 45pt;
 padding-left: 4mm;
 font-weight: normal;
+border-bottom: 1px solid;
+border-color: #0b4545;
 }
 .span {
 width: 200%;
