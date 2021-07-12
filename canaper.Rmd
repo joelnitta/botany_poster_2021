@@ -6,7 +6,7 @@ author:
     orcid: '0000-0003-4719-7472'
 affiliation:
   - num: 1
-    address: University of Tokyo, Department of Biological Sciences<br>✉️ joelnitta@gmail.com<br>🌍 https://joelnitta.com<p style='font-size:60px'>https://github.com/joelnitta/canaper</p>
+    address: "University of Tokyo, Department of Biological Sciences<br>✉️ joelnitta@gmail.com<br>🌍 https://joelnitta.com<p style='font-size:60px'>Check out the repo: https://github.com/joelnitta/canaper</p>"
 column_numbers: 3
 logoright_name: "images/logo_ut.png"
 output: 
@@ -58,6 +58,8 @@ knitr::opts_chunk$set(
 )
 options(digits = 2)
 library(canaper)
+
+set.seed(071221)
 ```
 
 # 1. Background
@@ -74,7 +76,7 @@ library(canaper)
 
 # 3. Installation and loading
 
-`canaper` is currently available on GitHub
+`canaper` is currently available on GitHub.
 
 ```{r install, eval = FALSE}
 devtools::install_github("joelnitta/canaper")
