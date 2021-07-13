@@ -1,5 +1,5 @@
 ---
-title: "canaper: Categorical analysis of neo- and paleo-endemism in R"
+title: "`canaper`: Categorical analysis of neo- and paleo-endemism in R"
 author:
   - name: Joel H. Nitta
     affil: 1
@@ -18,13 +18,6 @@ bibliography: references.yaml
 ---
 
 ```{css, style, echo = FALSE}
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-$if(csl-entry-spacing)$
-  margin-bottom: $csl-entry-spacing$;
-$endif$
-}
 .hanging div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
@@ -45,6 +38,11 @@ code.r{
 }
 pre {
   font-size: 16px
+}
+#title code {
+  color: inherit;
+  font-size: inherit;
+  background-color: transparent;
 }
 ```
 
