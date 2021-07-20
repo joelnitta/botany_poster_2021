@@ -62,7 +62,7 @@ set.seed(071221)
 
 # 1. Background
 
-* CANAPE (**C**ategorical **A**nalysis of **N**eo- and **P**aleo-endemism) is a recently developed method that provides insight into the evolutionary processes underlying endemism [@Gonzalez-Orozco2014]
+* CANAPE (**C**ategorical **A**nalysis of **N**eo- and **P**aleo-endemism) is a recently developed method that provides insight into the evolutionary processes underlying endemism [@Mishler2014]
 * CANAPE integrates a phylogenetic tree with a community (species × sites) matrix to infer if endemic areas are so because of recent speciation (neoendemism), or because they harbor old lineages that have mostly gone extinct in other areas (paleoendemism), or if they are a mixture of both
 * CANAPE is currently only implemented in Biodiverse [@Laffan2010], a program written in perl that is used via a GUI or custom scripts.
 * <span style='font-size:120%'>**`canaper` is a new R package to conduct CANAPE entirely in R**</span>
@@ -90,7 +90,7 @@ library(tidyverse) # For data wrangling and visualization
 
 # 4. Example: Australian *Acacia*
 
-This demonstrates the package using the dataset of the paper where CANAPE was first published [@Gonzalez-Orozco2014]: `r ncol(acacia$comm)` species of *Acacia* in Australia distributed over `r nrow(acacia$comm)` sites:
+This demonstrates the package using the dataset of the paper where CANAPE was first published [@Mishler2014]: `r ncol(acacia$comm)` species of *Acacia* in Australia distributed over `r nrow(acacia$comm)` sites:
 
 ```{r load}
 # Phylogenetic tree

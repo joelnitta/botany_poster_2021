@@ -30,42 +30,6 @@ references:
   type: article-journal
   URL: https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13478
   volume: '11'
-- id: Gonzalez-Orozco2014
-  author:
-  - family: González-Orozco
-    given: Carlos E.
-  - family: Ebach
-    given: Malte C.
-  - family: Laffan
-    given: Shawn
-  - family: Thornhill
-    given: Andrew H.
-  - family: Knerr
-    given: Nunzio J.
-  - family: Schmidt-Lebuhn
-    given: Alexander N.
-  - family: Cargill
-    given: Christine C.
-  - family: Clements
-    given: Mark
-  - family: Nagalingum
-    given: Nathalie S.
-  - family: Mishler
-    given: Brent D
-  - family: Miller
-    given: Joseph T.
-  container-title: PLoS ONE
-  DOI: 10.1371/journal.pone.0092558
-  ISSN: 1932-6203
-  issue: '3'
-  issued:
-  - year: 2014
-  page: e92558
-  title: Quantifying phytogeographical regions of Australia using geospatial turnover
-    in species composition
-  type: article-journal
-  URL: http://dx.plos.org/10.1371/journal.pone.0092558
-  volume: '9'
 - id: Kembel2010
   accessed:
   - year: 2021
@@ -123,3 +87,28 @@ references:
   title: Biodiverse, a tool for the spatial analysis of biological and related diversity
   type: article-journal
   volume: '33'
+- id: Mishler2014
+  author:
+  - family: Mishler
+    given: Brent D
+  - family: Knerr
+    given: Nunzio
+  - family: González-Orozco
+    given: Carlos E.
+  - family: Thornhill
+    given: Andrew H.
+  - family: Laffan
+    given: Shawn W.
+  - family: Miller
+    given: Joseph T.
+  container-title: Nature Communications
+  DOI: 10.1038/ncomms5473
+  ISSN: 2041-1723
+  issued:
+  - year: 2014
+  page: '4473'
+  title: Phylogenetic measures of biodiversity and neo- and paleo-endemism in Australian
+    Acacia
+  type: article-journal
+  URL: http://www.nature.com/doifinder/10.1038/ncomms5473
+  volume: '5'
